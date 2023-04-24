@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class KnightController : MonoBehaviour
+public class UnitController : MonoBehaviour
 {
     private UnitStats unitStats;
     private Rigidbody2D rb;
@@ -53,9 +53,10 @@ public class KnightController : MonoBehaviour
 
     private void Attack()
     {
-        if (target.GetComponent<UnitStats>().GetHealth() - unitStats.GetDamage() > 0)
+        if (target.GetComponent<UnitStats>().GetHealth() - unitStats.GetDamage() >= 0 || target.GetComponent<UnitStats>().GetHealth() - unitStats.GetDamage() < 0)
         {
             anim.SetTrigger("Attack");
+            // Тут возникает баг, когда юнит начинает бить уже после смерти противника (в условии)
         }
     }
 
