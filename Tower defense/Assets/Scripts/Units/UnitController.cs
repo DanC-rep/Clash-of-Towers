@@ -60,7 +60,7 @@ public class UnitController : MonoBehaviour
         }
     }
 
-    private void DecreaseEnemyHP()
+    public void DecreaseEnemyHP()
     {
         if (target != null)
         {

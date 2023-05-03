@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 28114
+  controlID: 69464
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -56,12 +56,12 @@ MonoBehaviour:
   m_SerializedViewNames:
   - UnityEditor.DeviceSimulation.SimulatorWindow
   m_SerializedViewValues:
-  - D:\Game Projects\Tower-defense-game\Tower defense\Library\PlayModeViewStates\43088de1750d5124db370a5c7666f2b0
+  - D:\Game Projects\Tower-defense-game\Tower defense\Library\PlayModeViewStates\87dc4d5d0720e214abb88a5abb175f46
   m_PlayModeViewName: GameView
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 880.4, y: 416.4}
+  m_TargetSize: {x: 1100.5, y: 520.5}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -76,10 +76,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -352.16
-    m_HBaseRangeMax: 352.16
-    m_VBaseRangeMin: -166.56
-    m_VBaseRangeMax: 166.56
+    m_HBaseRangeMin: -440.2
+    m_HBaseRangeMax: 440.2
+    m_VBaseRangeMin: -208.2
+    m_VBaseRangeMax: 208.2
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 28115
+  controlID: 69465
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 28116
+  controlID: 69466
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,9 +226,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3c6effff
-      m_LastClickedID: -37316
-      m_ExpandedIDs: 446effff2a70ffffa87effff5082ffffaea7ffffeaddffff8af8ffff9cf8ffff08f9ffff26fbffff705f0000745f0000785f0000825f0000
+      m_SelectedIDs: de0fffff0402ffffbe01ffff92c7feff46c7fefff6c6feff
+      m_LastClickedID: -80138
+      m_ExpandedIDs: 2e0fffff720fffffac16ffff4a1affffa21affff6e1dffffba21ffff0622ffffd027ffffc295ffff4cb2ffff64b2ffff70b2ffffe2eeffff26fbffff7c5f0000885f0000985f0000a0c70000b2c700008ac80000c6c90000cac90000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -356,7 +356,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -498,7 +498,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 0
       collapsed: 0
-      displayed: 1
+      displayed: 0
       snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -559,9 +559,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 5.7232714, y: -1.7386638, z: -9.972753}
+    m_Target: {x: 361.10156, y: 47.82087, z: 0}
     speed: 2
-    m_Value: {x: 5.7232714, y: -1.7386638, z: -9.972753}
+    m_Value: {x: 361.10156, y: 47.82087, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -612,9 +612,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 9.399648
+    m_Target: 111.967766
     speed: 2
-    m_Value: 9.399648
+    m_Value: 111.967766
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -667,7 +667,7 @@ MonoBehaviour:
   - {fileID: 12}
   - {fileID: 13}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -709,22 +709,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/!VibrantEffectTexturesFreePack
+    - Assets/Prefabs/UI
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/!VibrantEffectTexturesFreePack
+  - Assets/Prefabs/UI
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Game Projects\Tower-defense-game\Tower defense
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 72930000
-    m_LastClickedID: 37746
-    m_ExpandedIDs: 0000000090610000926100009461000096610000e8770000669300007093000074930000
+    m_SelectedIDs: b4db0000
+    m_LastClickedID: 56244
+    m_ExpandedIDs: 00000000e4620000e6620000e8620000ec620000ee620000f0620000f2620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -752,7 +752,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000090610000926100009461000096610000e8770000669300007093000074930000
+    m_ExpandedIDs: 00000000e4620000e6620000e8620000ec620000ee620000f0620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -777,8 +777,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 3c6effff
-    m_LastClickedInstanceID: -37316
+    m_SelectedInstanceIDs: de0fffff0402ffffbe01ffff92c7feff46c7fefff6c6feff
+    m_LastClickedInstanceID: -61474
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000ba6d0000d46d0000826d0000906d0000746d00009e6d0000c86d0000ca5f00001a60000032600000
     m_RenameOverlay:
@@ -866,7 +866,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -37308
+  m_LastSelectedObjectID: -80138
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -902,6 +902,7 @@ MonoBehaviour:
     - {fileID: 1107000013030521022, guid: 4184c92d441824ac3beb993f17f0d0fc, type: 2}
     - {fileID: 1107000013461085816, guid: 2deec9488aaac47ad9c09eed3aed072e, type: 2}
     - {fileID: 110725586, guid: 9be21d0cc76a54cb3b1d888b51070247, type: 2}
+    - {fileID: 110790824, guid: d802920b5f1124a778f16c31c3373388, type: 2}
     m_ValueSerializationHelper:
     - e00: 0.5220063
       e01: 0
@@ -983,10 +984,26 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
+    - e00: 0.58967745
+      e01: 0
+      e02: 0
+      e03: 61.825806
+      e10: 0
+      e11: 0.58967745
+      e12: 0
+      e13: -55.7613
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 9be21d0cc76a54cb3b1d888b51070247, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 2deec9488aaac47ad9c09eed3aed072e, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 110725586, guid: 9be21d0cc76a54cb3b1d888b51070247, type: 2}
+  - m_Target: {fileID: 1107000013461085816, guid: 2deec9488aaac47ad9c09eed3aed072e, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -1056,7 +1073,7 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 225
+    m_CachedPref: 156
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
