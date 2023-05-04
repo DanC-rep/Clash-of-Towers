@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjToThrow : MonoBehaviour
@@ -12,11 +10,13 @@ public class ObjToThrow : MonoBehaviour
         {
             Destroy(gameObject);
             parent.GetComponent<UnitController>().DecreaseEnemyHP();
+            Debug.Log("hit");
         }
-        if (parent.tag == "SecondTeam" && collision.gameObject.tag == "FirstTeam")
+        else if (parent.tag == "SecondTeam" && collision.gameObject.tag == "FirstTeam")
         {
             Destroy(gameObject);
             parent.GetComponent<UnitController>().DecreaseEnemyHP();
         }
     }
+
 }

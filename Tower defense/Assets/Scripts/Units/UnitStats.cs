@@ -7,6 +7,7 @@ public class UnitStats : MonoBehaviour
     [SerializeField] private int radius;
     [SerializeField] private float speed;
     [SerializeField] private int damage;
+    [SerializeField] private int cost;
 
     [SerializeField] private HealthBar healthBar;
 
@@ -35,6 +36,11 @@ public class UnitStats : MonoBehaviour
         return damage;
     }
 
+    public int GetCost()
+    {
+        return cost;
+    }
+
     public void TakeDamage(int damage)
     {
         if (health <= 0 || health - damage <= 0)
@@ -53,6 +59,11 @@ public class UnitStats : MonoBehaviour
 
     private void DestroyUnit()
     {
+        if (gameObject.tag == "SecondTeam")
+        {
+            PlayerSettings.instance.AddMoney(cost);
+        }
+
         Destroy(gameObject);
     }
 }

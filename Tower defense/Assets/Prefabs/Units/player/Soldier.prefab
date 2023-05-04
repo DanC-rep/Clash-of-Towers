@@ -639,10 +639,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5abce62ee01c59841b4a89375d9b1de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 120
+  health: 135
   radius: 4
   speed: 150
   damage: 35
+  cost: 100
   healthBar: {fileID: 2562085482270102177}
 --- !u!1 &71900010467649742
 GameObject:

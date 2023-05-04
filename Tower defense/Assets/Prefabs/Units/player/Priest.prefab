@@ -321,7 +321,9 @@ MonoBehaviour:
   radius: 20
   speed: 100
   damage: 45
+  cost: 125
   healthBar: {fileID: 897954113596396271}
+  playerSettings: {fileID: 0}
 --- !u!114 &4096250108512114130
 MonoBehaviour:
   m_ObjectHideFlags: 0
