@@ -1,25 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class UnitStats : MonoBehaviour
+public class UnitStats : ObjStats
 {
-    [SerializeField] private int health;
     [SerializeField] private int radius;
     [SerializeField] private float speed;
     [SerializeField] private int damage;
     [SerializeField] private int cost;
-
-    [SerializeField] private HealthBar healthBar;
-
-    private void Start()
-    {
-        healthBar.SetMaxHealth(health);
-    }
-
-    public int GetHealth()
-    {
-        return health;
-    }
+    [SerializeField] private int towerRadius;
 
     public int GetRadius()
     {
@@ -41,7 +29,12 @@ public class UnitStats : MonoBehaviour
         return cost;
     }
 
-    public void TakeDamage(int damage)
+    public int GetTowerRadius()
+    {
+        return towerRadius;
+    }
+
+    public override void TakeDamage(int damage)
     {
         if (health <= 0 || health - damage <= 0)
         {

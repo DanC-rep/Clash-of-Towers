@@ -556,11 +556,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5abce62ee01c59841b4a89375d9b1de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 40
+  startHealth: 80
+  healthBar: {fileID: 1048975418129284267}
   radius: 5
   speed: 150
   damage: 30
-  healthBar: {fileID: 1048975418129284267}
+  cost: 0
+  towerRadius: 0
 --- !u!1 &3199132836610190788
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,7 +26,8 @@ public class UnitController : MonoBehaviour
 
     private void Move()
     {
-        if (target != null && Vector2.Distance(transform.position, target.position) > unitStats.GetRadius())
+        bool moveCond = target != null && ((target.tag.Contains("Team") && Vector2.Distance(transform.position, target.position) > unitStats.GetRadius()) || (target.tag.Contains("Tower") && Vector2.Distance(transform.position, target.position) > unitStats.GetTowerRadius()));
+        if (moveCond)
         {
             anim.SetBool("Move", true);
             if (target.position.x > transform.position.x)
@@ -40,7 +41,7 @@ public class UnitController : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
         }
-        else if (target != null && Vector2.Distance(transform.position, target.position) < unitStats.GetRadius())
+        else if (target != null && ((target.tag.Contains("Team") && Vector2.Distance(transform.position, target.position) < unitStats.GetRadius()) || (target.tag.Contains("Tower") && Vector2.Distance(transform.position, target.position) < unitStats.GetTowerRadius())))
         {
             anim.SetBool("Move", false);
             Attack();
@@ -53,10 +54,9 @@ public class UnitController : MonoBehaviour
 
     private void Attack()
     {
-        if (target.GetComponent<UnitStats>().GetHealth() - unitStats.GetDamage() >= 0 || target.GetComponent<UnitStats>().GetHealth() - unitStats.GetDamage() < 0)
+        if (target.GetComponent<ObjStats>().GetHealth() - unitStats.GetDamage() >= 0 || target.GetComponent<ObjStats>().GetHealth() - unitStats.GetDamage() < 0)
         {
             anim.SetTrigger("Attack");
-            // Тут возникает баг, когда юнит начинает бить уже после смерти противника (в условии)
         }
     }
 
@@ -64,7 +64,7 @@ public class UnitController : MonoBehaviour
     {
         if (target != null)
         {
-            target.GetComponent<UnitStats>().TakeDamage(unitStats.GetDamage());
+            target.GetComponent<ObjStats>().TakeDamage(unitStats.GetDamage());
         }
     }
 
@@ -75,14 +75,25 @@ public class UnitController : MonoBehaviour
         if (gameObject.tag == "FirstTeam")
         {
             enemies = GameObject.FindGameObjectsWithTag("SecondTeam");
+
+            if (enemies.Length == 0)
+            {
+                enemies = GameObject.FindGameObjectsWithTag("BlueTower");
+            }
         }
         else
         {
             enemies = GameObject.FindGameObjectsWithTag("FirstTeam");
+
+            if (enemies.Length == 0)
+            {
+                enemies = GameObject.FindGameObjectsWithTag("RedTower");
+            }
         }
 
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
+
 
         foreach (var enemy in enemies)
         {

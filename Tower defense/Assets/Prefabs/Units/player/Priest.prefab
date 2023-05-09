@@ -317,13 +317,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5abce62ee01c59841b4a89375d9b1de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  startHealth: 65
+  healthBar: {fileID: 897954113596396271}
   radius: 20
   speed: 100
   damage: 45
   cost: 125
-  healthBar: {fileID: 897954113596396271}
-  playerSettings: {fileID: 0}
+  towerRadius: 0
 --- !u!114 &4096250108512114130
 MonoBehaviour:
   m_ObjectHideFlags: 0
