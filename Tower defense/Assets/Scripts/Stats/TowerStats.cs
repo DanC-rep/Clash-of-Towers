@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class TowerStats : ObjStats
 {
+    [SerializeField] private GameObject losePanel;
+
     public override void TakeDamage(int damage)
     {
         if (health <= 0 || health - damage / 2 <= 0)
@@ -34,5 +36,6 @@ public class TowerStats : ObjStats
     private void DestroyTower()
     {
         Destroy(gameObject);
+        losePanel.SetActive(true);
     }
 }

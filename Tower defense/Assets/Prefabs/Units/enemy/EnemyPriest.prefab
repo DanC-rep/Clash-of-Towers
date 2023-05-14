@@ -407,8 +407,8 @@ MonoBehaviour:
   radius: 20
   speed: 100
   damage: 45
-  cost: 0
-  towerRadius: 0
+  cost: 125
+  towerRadius: 15
 --- !u!114 &1582151681
 MonoBehaviour:
   m_ObjectHideFlags: 0

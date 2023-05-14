@@ -6,13 +6,13 @@ public class ObjToThrow : MonoBehaviour
     {
         GameObject parent = transform.parent.gameObject;
 
-        if (parent.tag == "FirstTeam" && collision.gameObject.tag == "SecondTeam")
+        if (parent.tag == "FirstTeam" && (collision.gameObject.tag == "SecondTeam" || collision.gameObject.tag == "BlueTower"))
         {
             Destroy(gameObject);
             parent.GetComponent<UnitController>().DecreaseEnemyHP();
             Debug.Log("hit");
         }
-        else if (parent.tag == "SecondTeam" && collision.gameObject.tag == "FirstTeam")
+        else if (parent.tag == "SecondTeam" && (collision.gameObject.tag == "FirstTeam" || collision.gameObject.tag == "RedTower"))
         {
             Destroy(gameObject);
             parent.GetComponent<UnitController>().DecreaseEnemyHP();
