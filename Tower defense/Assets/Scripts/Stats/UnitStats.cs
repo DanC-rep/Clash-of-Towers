@@ -34,6 +34,21 @@ public class UnitStats : ObjStats
         return towerRadius;
     }
 
+    public void AddDamage(int _damage)
+    {
+        damage += _damage;
+    }
+
+    public void AddSpeed(int _speed)
+    {
+        speed += _speed;
+    }
+
+    public void AddStartHealth(int _health)
+    {
+        startHealth += _health;
+    }
+
     public override void TakeDamage(int damage)
     {
         if (health <= 0 || health - damage <= 0)

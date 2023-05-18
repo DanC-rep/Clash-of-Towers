@@ -7,10 +7,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform parent;
     [SerializeField] private int timeToSpawn;
+    [SerializeField] private int startTimetoSpawn;
 
     private void Start()
     {
-        InvokeRepeating("spawnUnits", 0f, timeToSpawn);
+        InvokeRepeating("spawnUnits", startTimetoSpawn, timeToSpawn);
     }
 
     private void spawnUnits()

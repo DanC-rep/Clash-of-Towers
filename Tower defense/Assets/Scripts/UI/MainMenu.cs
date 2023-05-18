@@ -3,9 +3,32 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject[] objsToHideShop;
+    [SerializeField] private GameObject[] objsThoHideSelector;
+
+    [SerializeField] private GameObject shop;
+    [SerializeField] private GameObject levelSelector;
+
     public void Play()
     {
-        SceneManager.LoadScene(0);
+        if (levelSelector.activeSelf == false)
+        {
+            levelSelector.SetActive(true);
+
+            foreach (var obj in objsThoHideSelector)
+            {
+                obj.SetActive(false);
+            }
+        }
+        else
+        {
+            levelSelector.SetActive(false);
+
+            foreach (var obj in objsThoHideSelector)
+            {
+                obj.SetActive(true);
+            }
+        }
     }
 
     public void Settings()
@@ -13,8 +36,25 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Settings");
     }
 
-    public void Help()
+    public void Shop()
     {
-        Debug.Log("Help");
+        if (shop.activeSelf == false)
+        {
+            shop.SetActive(true);
+
+            foreach (var obj in objsToHideShop)
+            {
+                obj.SetActive(false);
+            }
+        }
+        else
+        {
+            shop.SetActive(false);
+
+            foreach (var obj in objsToHideShop)
+            {
+                obj.SetActive(true);
+            }
+        }
     }
 }

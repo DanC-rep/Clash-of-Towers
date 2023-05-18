@@ -11,6 +11,8 @@ public class LosePanel : MonoBehaviour
         {
             obj.SetActive(false);
         }
+
+        Time.timeScale = 0;
     }
 
     public void Restart()
@@ -20,6 +22,6 @@ public class LosePanel : MonoBehaviour
 
     public void Exit()
     {
-        Debug.Log("Go to menu");
+        SceneManager.LoadScene(1);
     }
 }

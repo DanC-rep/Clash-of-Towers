@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TowerStats : ObjStats
 {
-    [SerializeField] private GameObject losePanel;
+    [SerializeField] private GameObject endGamePanel;
 
     public override void TakeDamage(int damage)
     {
@@ -36,6 +36,7 @@ public class TowerStats : ObjStats
     private void DestroyTower()
     {
         Destroy(gameObject);
-        losePanel.SetActive(true);
+
+        endGamePanel.SetActive(true);
     }
 }

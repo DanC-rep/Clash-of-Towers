@@ -20,6 +20,12 @@ public class ObjStats : MonoBehaviour
         return health;
     }
 
+    public int GetStartHealth()
+    {
+        return startHealth;
+    }
+
+
     public virtual void TakeDamage(int damage)
     {
         
