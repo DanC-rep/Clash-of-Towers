@@ -7,6 +7,14 @@ public class ShopEl : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform parent;
 
+    private void Start()
+    {
+        if (!unit.GetComponent<UnitStats>().purchased)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     public void PurchaseUnit()
     {
         int unitCost = unit.GetComponent<UnitStats>().GetCost();

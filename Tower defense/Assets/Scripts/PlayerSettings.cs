@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerSettings : MonoBehaviour
@@ -17,6 +18,15 @@ public class PlayerSettings : MonoBehaviour
 
     [SerializeField] private int money;
     [SerializeField] private int diamonds;
+
+    [SerializeField] private int moneyPerTime;
+    [SerializeField] private int timeToWaitMoney;
+    [SerializeField] private int startTimeToGetMoneySpawn;
+
+    private void Start()
+    {
+        InvokeRepeating("AddMoneyPerTime", startTimeToGetMoneySpawn, timeToWaitMoney);
+    }
 
     public void AddMoney(int addMoney)
     {
@@ -53,5 +63,10 @@ public class PlayerSettings : MonoBehaviour
         {
             money -= decreaseMoney;
         }
+    }
+
+    private void AddMoneyPerTime()
+    {
+        AddMoney(moneyPerTime);
     }
 }

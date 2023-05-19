@@ -5,6 +5,8 @@ public class LosePanel : MonoBehaviour
 {
     [SerializeField] private GameObject[] objsToHide;
 
+    public static bool isActive = false;
+
     private void Start()
     {
         foreach (var obj in objsToHide)
@@ -12,7 +14,7 @@ public class LosePanel : MonoBehaviour
             obj.SetActive(false);
         }
 
-        Time.timeScale = 0;
+        isActive = true;
     }
 
     public void Restart()

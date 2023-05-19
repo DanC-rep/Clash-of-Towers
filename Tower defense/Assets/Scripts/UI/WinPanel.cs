@@ -1,9 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WinPanel : MonoBehaviour
 {
     [SerializeField] private GameObject[] objsToHide;
+    [SerializeField] private Text diamondsText;
+    [SerializeField] private TowerStats blueTower;
+
+    public static bool isActive = false;
 
     private void Start()
     {
@@ -12,7 +17,9 @@ public class WinPanel : MonoBehaviour
             obj.SetActive(false);
         }
 
-        Time.timeScale = 0;
+        diamondsText.text = blueTower.GetAddedDiamonds().ToString();
+
+        isActive = true;
     }
 
     public void NextLevel()

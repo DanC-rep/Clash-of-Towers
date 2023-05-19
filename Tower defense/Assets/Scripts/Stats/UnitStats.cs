@@ -8,6 +8,9 @@ public class UnitStats : ObjStats
     [SerializeField] private int damage;
     [SerializeField] private int cost;
     [SerializeField] private int towerRadius;
+    [SerializeField] private int diamondsCost;
+
+    public bool purchased;
 
     public int GetRadius()
     {
@@ -34,6 +37,11 @@ public class UnitStats : ObjStats
         return towerRadius;
     }
 
+    public int GetDiamondsCost()
+    {
+        return diamondsCost;
+    }
+
     public void AddDamage(int _damage)
     {
         damage += _damage;
@@ -48,6 +56,7 @@ public class UnitStats : ObjStats
     {
         startHealth += _health;
     }
+
 
     public override void TakeDamage(int damage)
     {

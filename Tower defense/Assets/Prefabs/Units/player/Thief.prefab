@@ -902,6 +902,8 @@ MonoBehaviour:
   damage: 30
   cost: 150
   towerRadius: 7
+  diamondsCost: 10
+  purchased: 0
 --- !u!1 &9171858875888826647
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,7 +27,18 @@ public class UnitController : MonoBehaviour
     private void Move()
     {
         bool moveCond = target != null && ((target.tag.Contains("Team") && Vector2.Distance(transform.position, target.position) > unitStats.GetRadius()) || (target.tag.Contains("Tower") && Vector2.Distance(transform.position, target.position) > unitStats.GetTowerRadius()));
-        if (moveCond)
+        if (gameObject.tag == "FirstTeam" && WinPanel.isActive == true)
+        {
+            anim.SetBool("Move", false);
+            anim.SetBool("Victory", true);
+            
+        }
+        else if (gameObject.tag == "SecondTeam" && LosePanel.isActive == true)
+        {
+            anim.SetBool("Move", false);
+            anim.SetBool("Victory", true);
+        }
+        else if (moveCond)
         {
             anim.SetBool("Move", true);
             if (target.position.x > transform.position.x)
