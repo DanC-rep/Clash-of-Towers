@@ -43,6 +43,8 @@ public class ShopMenuEl : MonoBehaviour
                 diamondIcon.enabled = false;
 
                 OpenUnit();
+
+                GlobalEventManager.SendUnitPurchaseDiamonds();
             }
         }
     }

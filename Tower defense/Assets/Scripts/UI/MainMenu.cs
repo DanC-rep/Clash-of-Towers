@@ -5,9 +5,11 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject[] objsToHideShop;
     [SerializeField] private GameObject[] objsThoHideSelector;
+    [SerializeField] private GameObject[] objsToHideTowerUpgade;
 
     [SerializeField] private GameObject shop;
     [SerializeField] private GameObject levelSelector;
+    [SerializeField] private GameObject towerUpgrade;
 
     public void Play()
     {
@@ -52,6 +54,28 @@ public class MainMenu : MonoBehaviour
             shop.SetActive(false);
 
             foreach (var obj in objsToHideShop)
+            {
+                obj.SetActive(true);
+            }
+        }
+    }
+
+    public void TowerUpgradeShop()
+    {
+        if (towerUpgrade.activeSelf == false)
+        {
+            towerUpgrade.SetActive(true);
+
+            foreach (var obj in objsToHideTowerUpgade)
+            {
+                obj.SetActive(false);
+            }
+        }
+        else
+        {
+            towerUpgrade.SetActive(false);
+
+            foreach (var obj in objsToHideTowerUpgade)
             {
                 obj.SetActive(true);
             }

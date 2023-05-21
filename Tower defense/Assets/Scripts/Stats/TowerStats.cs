@@ -41,6 +41,8 @@ public class TowerStats : ObjStats
         endGamePanel.SetActive(true);
 
         PlayerSettings.instance.AddDiamonds(diamonds);
+
+        GlobalEventManager.SendTowerDestroy(gameObject.tag);
     }
 
     public int GetAddedDiamonds()

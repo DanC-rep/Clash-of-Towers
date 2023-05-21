@@ -4,6 +4,7 @@ public class ObjStats : MonoBehaviour
 {
     [SerializeField] private protected int startHealth;
     [SerializeField] private protected HealthBar healthBar;
+    [SerializeField] private int diamondsCost;
 
     private protected int health;
 
@@ -23,6 +24,11 @@ public class ObjStats : MonoBehaviour
     public int GetStartHealth()
     {
         return startHealth;
+    }
+
+    public int GetDiamondsCost()
+    {
+        return diamondsCost;
     }
 
 

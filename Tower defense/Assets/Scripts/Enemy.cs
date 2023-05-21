@@ -9,19 +9,27 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int timeToSpawn;
     [SerializeField] private int startTimetoSpawn;
 
+    private bool canSpawn = true;
     private void Start()
     {
-        InvokeRepeating("spawnUnits", startTimetoSpawn, timeToSpawn);
+        InvokeRepeating("SpawnUnits", startTimetoSpawn, timeToSpawn);
+
+        GlobalEventManager.OnTowerDestroy.AddListener(StopSpawn);
     }
 
-    private void spawnUnits()
+    private void SpawnUnits()
     {
-        if (!LosePanel.isActive && !WinPanel.isActive)
+        if (canSpawn)
         {
             int unitsCol = units.Length;
             int unitNumToSpawn = Random.Range(0, unitsCol);
             GameObject newUnit = Instantiate(units[unitNumToSpawn], spawnPoint.position, spawnPoint.rotation, parent);
             newUnit.transform.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y, 1);
         }
+    }
+
+    private void StopSpawn(string towerName)
+    {
+        canSpawn = false; 
     }
 }

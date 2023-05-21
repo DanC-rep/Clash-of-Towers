@@ -10,9 +10,18 @@ public class Diamonds : MonoBehaviour
     {
         diamondsText = GetComponent<Text>();
         diamondsText.text = PlayerSettings.instance.GetDiamonds().ToString();
+
+        GlobalEventManager.OnTowerDestroy.AddListener(SetDiamonds);
+        GlobalEventManager.OnPurchaseUnitDiamonds.AddListener(SetDiamonds);
+        GlobalEventManager.OnStatUpgraded.AddListener(SetDiamonds);
     }
 
-    private void Update()
+    private void SetDiamonds()
+    {
+        diamondsText.text = PlayerSettings.instance.GetDiamonds().ToString();
+    }
+
+    private void SetDiamonds(string towerName)
     {
         diamondsText.text = PlayerSettings.instance.GetDiamonds().ToString();
     }

@@ -8,7 +8,6 @@ public class UnitStats : ObjStats
     [SerializeField] private int damage;
     [SerializeField] private int cost;
     [SerializeField] private int towerRadius;
-    [SerializeField] private int diamondsCost;
 
     public bool purchased;
 
@@ -35,11 +34,6 @@ public class UnitStats : ObjStats
     public int GetTowerRadius()
     {
         return towerRadius;
-    }
-
-    public int GetDiamondsCost()
-    {
-        return diamondsCost;
     }
 
     public void AddDamage(int _damage)
@@ -74,7 +68,7 @@ public class UnitStats : ObjStats
         }
     }
 
-    private void DestroyUnit()
+    public void DestroyUnit()
     {
         if (gameObject.tag == "SecondTeam")
         {
@@ -82,5 +76,7 @@ public class UnitStats : ObjStats
         }
 
         Destroy(gameObject);
+
+        GlobalEventManager.SendEnemyKilled();
     }
 }

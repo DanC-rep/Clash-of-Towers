@@ -17,6 +17,9 @@ public class UnitController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+
+        GlobalEventManager.OnTowerDestroy.AddListener(WinAnim);
+        GlobalEventManager.OnTowerDestroy.AddListener(DestroyUnitWhenGameEnded);
     }
 
     private void FixedUpdate()
@@ -27,18 +30,8 @@ public class UnitController : MonoBehaviour
     private void Move()
     {
         bool moveCond = target != null && ((target.tag.Contains("Team") && Vector2.Distance(transform.position, target.position) > unitStats.GetRadius()) || (target.tag.Contains("Tower") && Vector2.Distance(transform.position, target.position) > unitStats.GetTowerRadius()));
-        if (gameObject.tag == "FirstTeam" && WinPanel.isActive == true)
-        {
-            anim.SetBool("Move", false);
-            anim.SetBool("Victory", true);
-            
-        }
-        else if (gameObject.tag == "SecondTeam" && LosePanel.isActive == true)
-        {
-            anim.SetBool("Move", false);
-            anim.SetBool("Victory", true);
-        }
-        else if (moveCond)
+        
+        if (moveCond)
         {
             anim.SetBool("Move", true);
             if (target.position.x > transform.position.x)
@@ -71,11 +64,38 @@ public class UnitController : MonoBehaviour
         }
     }
 
+    private void WinAnim(string towerName)
+    {
+        if (gameObject.tag == "FirstTeam" && towerName == "BlueTower")
+        {
+            anim.SetBool("Move", false);
+            anim.SetBool("Victory", true);
+
+        }
+        else if (gameObject.tag == "SecondTeam" && towerName == "RedTower")
+        {
+            anim.SetBool("Move", false);
+            anim.SetBool("Victory", true);
+        }
+    }
+
     public void DecreaseEnemyHP()
     {
         if (target != null)
         {
             target.GetComponent<ObjStats>().TakeDamage(unitStats.GetDamage());
+        }
+    }
+
+    public void DestroyUnitWhenGameEnded(string towerName)
+    {
+        if (gameObject.tag == "FirstTeam" && towerName == "RedTower")
+        {
+            unitStats.DestroyUnit();
+        }
+        else if (gameObject.tag == "SecondTeam" && towerName == "BlueTower")
+        {
+            unitStats.DestroyUnit();
         }
     }
 

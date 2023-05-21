@@ -17,6 +17,8 @@ public class AddStatsPanel : MonoBehaviour
             damageText.text = ShopMenuEl.choosedUnit.GetComponent<UnitStats>().GetDamage().ToString();
 
             PlayerSettings.instance.DecreaseDiamonds(damageCost);
+
+            GlobalEventManager.SendStatUpgraded();
         } 
     }
 
@@ -28,6 +30,8 @@ public class AddStatsPanel : MonoBehaviour
             speedText.text = ShopMenuEl.choosedUnit.GetComponent<UnitStats>().GetSpeed().ToString();
 
             PlayerSettings.instance.DecreaseDiamonds(speedCost);
+
+            GlobalEventManager.SendStatUpgraded();
         }
     }
 
@@ -39,6 +43,8 @@ public class AddStatsPanel : MonoBehaviour
             healthText.text = ShopMenuEl.choosedUnit.GetComponent<UnitStats>().GetStartHealth().ToString();
 
             PlayerSettings.instance.DecreaseDiamonds(healthCost);
+
+            GlobalEventManager.SendStatUpgraded();
         }
     }
 

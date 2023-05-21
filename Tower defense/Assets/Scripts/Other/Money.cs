@@ -9,9 +9,13 @@ public class Money : MonoBehaviour
     {
         moneyText = GetComponent<Text>();
         moneyText.text = PlayerSettings.instance.GetMoney().ToString();
+
+        GlobalEventManager.OnEnemyKilled.AddListener(SetTextMoney);
+        GlobalEventManager.OnPurchaseUnit.AddListener(SetTextMoney);
+        GlobalEventManager.OnMoneyAddedPerTime.AddListener(SetTextMoney);
     }
 
-    private void Update()
+    private void SetTextMoney()
     {
         moneyText.text = PlayerSettings.instance.GetMoney().ToString();
     }

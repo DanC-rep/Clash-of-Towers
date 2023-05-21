@@ -68,5 +68,7 @@ public class PlayerSettings : MonoBehaviour
     private void AddMoneyPerTime()
     {
         AddMoney(moneyPerTime);
+
+        GlobalEventManager.SendMoneyAddedPerTime();
     }
 }

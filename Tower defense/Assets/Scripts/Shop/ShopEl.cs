@@ -25,6 +25,7 @@ public class ShopEl : MonoBehaviour
             GameObject newUnit = Instantiate(unit, spawnPoint.position, spawnPoint.rotation, parent);
             newUnit.transform.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y, 1);
 
+            GlobalEventManager.SendPurchaseUnit();
         }
         else
         {
