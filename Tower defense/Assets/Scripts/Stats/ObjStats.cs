@@ -31,6 +31,20 @@ public class ObjStats : MonoBehaviour
         return diamondsCost;
     }
 
+    public void AddHealth(int _health)
+    {
+        if (health + _health <= startHealth)
+        {
+            health += _health;
+        }
+        else
+        {
+            health = startHealth;
+        }
+
+        healthBar.SetHealth(health);
+    }
+
 
     public virtual void TakeDamage(int damage)
     {

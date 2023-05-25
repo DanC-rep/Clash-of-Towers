@@ -5,21 +5,29 @@ using UnityEngine.UI;
 public class WinPanel : MonoBehaviour
 {
     [SerializeField] private GameObject[] objsToHide;
+    [SerializeField] private GameObject elParent;
     [SerializeField] private Text diamondsText;
     [SerializeField] private TowerStats blueTower;
 
-    public static bool isActive = false;
 
     private void Start()
     {
-        foreach (var obj in objsToHide)
+        GlobalEventManager.OnTowerDestroy.AddListener(ActivePanel);
+    }
+
+    private void ActivePanel(string towerName)
+    {
+        if (towerName == "BlueTower")
         {
-            obj.SetActive(false);
+            elParent.SetActive(true);
+
+            foreach (var obj in objsToHide)
+            {
+                obj.SetActive(false);
+            }
+
+            diamondsText.text = blueTower.GetAddedDiamonds().ToString();
         }
-
-        diamondsText.text = blueTower.GetAddedDiamonds().ToString();
-
-        isActive = true;
     }
 
     public void NextLevel()

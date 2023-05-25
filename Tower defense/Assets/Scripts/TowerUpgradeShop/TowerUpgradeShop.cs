@@ -9,24 +9,42 @@ public class TowerUpgradeShop : MonoBehaviour
     [SerializeField] private Text costText;
     [SerializeField] private Image placeToPutImg;
     [SerializeField] private Image diamondIcon;
+    [SerializeField] private Button upgradeBtn;
 
     private int currentTowerLevel = 0;
 
     private void Start()
     {
+        currentTowerLevel = PlayerPrefs.GetInt("towerLevel", 0);
+
+        if (currentTowerLevel + 1 >= towers.Length)
+        {
+            upgradeBtn.interactable = false;
+        }
+
         placeToPutImg.enabled = true;
         placeToPutImg.sprite = towerIcons[currentTowerLevel];
-
-        costText.text = towers[currentTowerLevel + 1].GetComponent<TowerStats>().GetDiamondsCost().ToString();
-
         healthText.text = "Health: " + towers[currentTowerLevel].GetComponent<TowerStats>().GetStartHealth().ToString();
+
+        if (currentTowerLevel + 1 < towers.Length)
+        {
+            costText.text = towers[currentTowerLevel + 1].GetComponent<TowerStats>().GetDiamondsCost().ToString();
+        }
+        else
+        {
+            costText.text = "Max Level";
+            diamondIcon.enabled = false;
+        }
+
     }
 
     public void UpgradeTower()
     {
-        if (PlayerSettings.instance.GetDiamonds() - towers[currentTowerLevel + 1].GetComponent<TowerStats>().GetDiamondsCost() >= 0 && currentTowerLevel + 1 < towers.Length)
+        if (currentTowerLevel + 1 < towers.Length && PlayerSettings.instance.GetDiamonds() - towers[currentTowerLevel + 1].GetComponent<TowerStats>().GetDiamondsCost() >= 0)
         {
-            currentTowerLevel += 1;
+            PlayerPrefs.SetInt("towerLevel", currentTowerLevel + 1);
+            currentTowerLevel = PlayerPrefs.GetInt("towerLevel", 0);
+
             PlayerSettings.instance.DecreaseDiamonds(towers[currentTowerLevel].GetComponent<TowerStats>().GetDiamondsCost());
 
             placeToPutImg.sprite = towerIcons[currentTowerLevel];
@@ -43,6 +61,10 @@ public class TowerUpgradeShop : MonoBehaviour
             }
 
             GlobalEventManager.SendUnitPurchaseDiamonds();
+        }
+        else
+        {
+            upgradeBtn.interactable = false;
         }
     }
 }

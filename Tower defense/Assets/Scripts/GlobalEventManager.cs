@@ -9,6 +9,7 @@ public class GlobalEventManager
     public static UnityEvent<string> OnTowerDestroy = new UnityEvent<string>();
     public static UnityEvent OnStatUpgraded = new UnityEvent();
     public static UnityEvent OnPurchaseUnitDiamonds = new UnityEvent();
+    public static UnityEvent OnPurchaseSkill = new UnityEvent();
 
 
     public static void SendEnemyKilled()
@@ -39,5 +40,10 @@ public class GlobalEventManager
     public static void SendUnitPurchaseDiamonds()
     {
         OnPurchaseUnitDiamonds.Invoke();
+    }
+
+    public static void SendSkillPurchase()
+    {
+        OnPurchaseSkill.Invoke();
     }
 }

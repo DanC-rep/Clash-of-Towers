@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private Button[] shopButtons;
+    [SerializeField] private Button[] buttons;
 
     [SerializeField] private float timeStart;
     
@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        foreach (var button in shopButtons)
+        foreach (var button in buttons)
         {
             button.interactable = false;
         }
@@ -35,7 +35,7 @@ public class Timer : MonoBehaviour
 
         if (!timeRunnning)
         {
-            foreach (var button in shopButtons)
+            foreach (var button in buttons)
             {
                 button.interactable = true;
             }

@@ -4,17 +4,25 @@ using UnityEngine.SceneManagement;
 public class LosePanel : MonoBehaviour
 {
     [SerializeField] private GameObject[] objsToHide;
+    [SerializeField] private GameObject elParent;
 
-    public static bool isActive = false;
 
     private void Start()
     {
-        foreach (var obj in objsToHide)
-        {
-            obj.SetActive(false);
-        }
+        GlobalEventManager.OnTowerDestroy.AddListener(ActivePanel);
+    }
 
-        isActive = true;
+    private void ActivePanel(string towerName)
+    {
+        if (towerName == "RedTower")
+        {
+            elParent.SetActive(true);
+
+            foreach (var obj in objsToHide)
+            {
+                obj.SetActive(false);
+            }
+        }
     }
 
     public void Restart()

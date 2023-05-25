@@ -217,13 +217,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startHealth: 100
   healthBar: {fileID: 6394146934551849040}
-  diamondsCost: 0
+  diamondsCost: 2
   radius: 4
   speed: 150
-  damage: 45
+  damage: 50
   cost: 100
   towerRadius: 6
-  purchased: 1
+  purchased: 0
 --- !u!1 &4573381304585913
 GameObject:
   m_ObjectHideFlags: 0

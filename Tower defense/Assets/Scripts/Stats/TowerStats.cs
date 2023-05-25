@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class TowerStats : ObjStats
 {
-    [SerializeField] private GameObject endGamePanel;
     [SerializeField] private int diamonds;
 
     public override void TakeDamage(int damage)
@@ -37,8 +36,6 @@ public class TowerStats : ObjStats
     private void DestroyTower()
     {
         Destroy(gameObject);
-
-        endGamePanel.SetActive(true);
 
         PlayerSettings.instance.AddDiamonds(diamonds);
 

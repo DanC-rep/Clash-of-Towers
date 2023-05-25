@@ -51,6 +51,13 @@ public class UnitStats : ObjStats
         startHealth += _health;
     }
 
+    public IEnumerator AddTemporarilyDamage(int _damage, int duration)
+    {
+        AddDamage(_damage);
+        yield return new WaitForSeconds(duration);
+        AddDamage(-_damage);
+    }
+
 
     public override void TakeDamage(int damage)
     {
