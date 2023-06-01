@@ -45,7 +45,7 @@ public class UnitController : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
         }
-        else if (target != null && ((target.tag.Contains("Team") && Vector2.Distance(transform.position, target.position) < unitStats.GetRadius()) || (target.tag.Contains("Tower") && Vector2.Distance(transform.position, target.position) < unitStats.GetTowerRadius())))
+        else if (target != null && ((target.tag.Contains("Team") && CheckDistanceToAttack()) || (target.tag.Contains("Tower") && Vector2.Distance(transform.position, target.position) < unitStats.GetTowerRadius())))
         {
             anim.SetBool("Move", false);
             Attack();
@@ -97,6 +97,16 @@ public class UnitController : MonoBehaviour
         {
             unitStats.DestroyUnit();
         }
+    }
+
+    bool CheckDistanceToAttack()
+    {
+        if (Vector2.Distance(transform.position, target.position) < unitStats.GetRadius())
+        {
+            return true;
+        }
+
+        return false;
     }
 
 

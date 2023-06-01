@@ -65,7 +65,12 @@ public class UnitStats : ObjStats
         {
             health -= damage;
             healthBar.SetHealth(health);
-            gameObject.GetComponent<Animator>().SetTrigger("Death");
+            if (canAnimateDeath == true)
+            {
+                gameObject.GetComponent<Animator>().SetTrigger("Death");
+            }
+
+            canAnimateDeath = false;
         }
         else
         {

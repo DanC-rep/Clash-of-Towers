@@ -8,6 +8,8 @@ public class ObjStats : MonoBehaviour
 
     private protected int health;
 
+    private protected bool canAnimateDeath = true;
+
     private void Start()
     {
         healthBar.SetMaxHealth(startHealth);
