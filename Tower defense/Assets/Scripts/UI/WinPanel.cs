@@ -8,6 +8,7 @@ public class WinPanel : MonoBehaviour
     [SerializeField] private GameObject elParent;
     [SerializeField] private Text diamondsText;
     [SerializeField] private TowerStats blueTower;
+    [SerializeField] private string nextLevel;
 
 
     private void Start()
@@ -32,7 +33,7 @@ public class WinPanel : MonoBehaviour
 
     public void NextLevel()
     {
-        Debug.Log("Next Level");
+        SceneManager.LoadScene(nextLevel);
     }
 
     public void Exit()

@@ -5,7 +5,7 @@ public class SkillsMenuEl : MonoBehaviour
 {
     [SerializeField] int diamondsCost;
     [SerializeField] int valueAdd;
-    [SerializeField] private int tempDuration;
+    [SerializeField] int tempDuration;
 
     [SerializeField] Text diamondsCostText;
 

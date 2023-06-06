@@ -19,11 +19,10 @@ public class PlayerSettings : MonoBehaviour
 
     [SerializeField] private float money;
     [SerializeField] private int diamonds;
-
-    [SerializeField] private float moneyPerTime;
     [SerializeField] private int timeToWaitMoney;
     [SerializeField] private int startTimeToGetMoneySpawn;
 
+    private float moneyPerTime;
     private float moneyPerSec;
 
     private void Start()
@@ -31,6 +30,7 @@ public class PlayerSettings : MonoBehaviour
         InvokeRepeating("AddMoneyPerTime", startTimeToGetMoneySpawn, timeToWaitMoney);
 
         moneyPerSec = moneyPerTime / timeToWaitMoney;
+
     }
 
     public void AddMoney(float addMoney)
@@ -56,6 +56,11 @@ public class PlayerSettings : MonoBehaviour
     public float GetMoneyPerSec()
     {
         return moneyPerSec;
+    }
+
+    public void SetMoneyPerTime(float _moneyPerTime)
+    {
+        moneyPerTime = _moneyPerTime;
     }
 
     public void DecreaseDiamonds(int decreaseDiamonds)

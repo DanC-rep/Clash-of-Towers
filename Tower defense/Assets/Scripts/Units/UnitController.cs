@@ -45,7 +45,7 @@ public class UnitController : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
         }
-        else if (target != null && ((target.tag.Contains("Team") && CheckDistanceToAttack()) || (target.tag.Contains("Tower") && Vector2.Distance(transform.position, target.position) < unitStats.GetTowerRadius())))
+        else if (target != null && ((target.tag.Contains("Team") && CheckDistanceToAttack()) || (target.tag.Contains("Tower") && CheckTowerDistanceToAttack())))
         {
             anim.SetBool("Move", false);
             Attack();
@@ -81,7 +81,7 @@ public class UnitController : MonoBehaviour
 
     public void DecreaseEnemyHP()
     {
-        if (target != null)
+        if (target != null && (CheckDistanceToAttack() || CheckTowerDistanceToAttack()))
         {
             target.GetComponent<ObjStats>().TakeDamage(unitStats.GetDamage());
         }
@@ -108,6 +108,16 @@ public class UnitController : MonoBehaviour
 
         return false;
     }
+    bool CheckTowerDistanceToAttack()
+    {
+        if (Vector2.Distance(transform.position, target.position) < unitStats.GetTowerRadius())
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 
 
     private void UpdateTarget()

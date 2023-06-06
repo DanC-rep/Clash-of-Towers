@@ -3,6 +3,7 @@ using UnityEngine;
 public class TowerStats : ObjStats
 {
     [SerializeField] private int diamonds;
+    [SerializeField] private float moneyPerTime;
 
     public override void TakeDamage(int damage)
     {
@@ -45,5 +46,10 @@ public class TowerStats : ObjStats
     public int GetAddedDiamonds()
     {
         return diamonds;
+    }
+
+    public float GetMoneyPerTime()
+    {
+        return moneyPerTime;
     }
 }

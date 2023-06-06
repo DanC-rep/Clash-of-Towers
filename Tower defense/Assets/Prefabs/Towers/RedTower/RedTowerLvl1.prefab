@@ -566,8 +566,8 @@ MonoBehaviour:
   startHealth: 200
   healthBar: {fileID: 8089930218122230652}
   diamondsCost: 0
-  endGamePanel: {fileID: 0}
   diamonds: 0
+  moneyPerTime: 0.4
 --- !u!95 &2387669150936456025
 Animator:
   serializedVersion: 4

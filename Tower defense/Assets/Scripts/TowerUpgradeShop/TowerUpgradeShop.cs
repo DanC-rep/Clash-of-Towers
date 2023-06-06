@@ -64,7 +64,7 @@ public class TowerUpgradeShop : MonoBehaviour
         }
         else
         {
-            upgradeBtn.interactable = false;
+            Debug.Log("Not enought money");
         }
     }
 }

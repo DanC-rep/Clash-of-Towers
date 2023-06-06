@@ -10,7 +10,7 @@ public class Clouds : MonoBehaviour
     {
         if (transform.position.x >= endPos.position.x)
         {
-            transform.position = startPos.position;
+            transform.position = new Vector3(startPos.position.x, transform.position.y, 0f);
         }
 
         transform.position += Vector3.right * speed / 2 * Time.deltaTime;

@@ -418,7 +418,7 @@ Animator:
   m_GameObject: {fileID: 5620362757915124945}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9be21d0cc76a54cb3b1d888b51070247, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3449b6f74244bc344b4dadfda8e31492, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -489,11 +489,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startHealth: 65
   healthBar: {fileID: 8135594875430221951}
+  diamondsCost: 0
   radius: 20
   speed: 100
   damage: 45
   cost: 125
   towerRadius: 15
+  purchased: 0
 --- !u!114 &1582151681
 MonoBehaviour:
   m_ObjectHideFlags: 0
