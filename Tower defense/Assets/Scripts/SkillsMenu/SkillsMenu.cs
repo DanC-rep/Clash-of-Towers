@@ -20,5 +20,9 @@ public class SkillsMenu : MonoBehaviour
             skillsMenu.SetActive(false);
             placeToPutMenuImg.sprite = openMenuPlusImg;
         }
+
+        GlobalEventManager.SendUIClcked();
     }
+
+
 }

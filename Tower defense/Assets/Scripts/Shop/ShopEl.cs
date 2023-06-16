@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopEl : MonoBehaviour
 {
@@ -6,6 +8,10 @@ public class ShopEl : MonoBehaviour
     [SerializeField] private PlayerSettings playerSettings;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform parent;
+    [SerializeField] private Button button;
+    [SerializeField] private int buyCooldown;
+
+    private Color color;
 
     private void Start()
     {
@@ -13,6 +19,8 @@ public class ShopEl : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        color = gameObject.GetComponent<Image>().color;
     }
 
     public void PurchaseUnit()
@@ -26,10 +34,21 @@ public class ShopEl : MonoBehaviour
             newUnit.transform.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y, 1);
 
             GlobalEventManager.SendPurchaseUnit();
+
+            StartCoroutine(BuyCooldown());
         }
         else
         {
-            Debug.Log("Not enough money");
+            StartCoroutine(UIColorChange.ChangeColorToRed(gameObject, color, new Color(1, 0.6075472f, 0.6075472f)));
         }
+
+        GlobalEventManager.SendUIClcked();
+    }
+
+    IEnumerator BuyCooldown()
+    {
+        button.interactable = false;
+        yield return new WaitForSeconds(buyCooldown);
+        button.interactable = true;
     }
 }

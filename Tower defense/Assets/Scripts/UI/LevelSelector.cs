@@ -21,6 +21,8 @@ public class LevelSelector : MonoBehaviour
 
     public void SelectLevel(string level)
     {
+        GlobalEventManager.SendUIClcked();
+
         SceneManager.LoadScene(level);
     }
 }

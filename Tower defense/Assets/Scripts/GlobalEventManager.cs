@@ -10,6 +10,9 @@ public class GlobalEventManager
     public static UnityEvent OnStatUpgraded = new UnityEvent();
     public static UnityEvent OnPurchaseUnitDiamonds = new UnityEvent();
     public static UnityEvent OnPurchaseSkill = new UnityEvent();
+    public static UnityEvent OnUnitDamaged = new UnityEvent();
+    public static UnityEvent OnTowerDamaged = new UnityEvent();
+    public static UnityEvent OnUIClicked = new UnityEvent();
 
 
     public static void SendEnemyKilled()
@@ -45,5 +48,20 @@ public class GlobalEventManager
     public static void SendSkillPurchase()
     {
         OnPurchaseSkill.Invoke();
+    }
+
+    public static void SendUnitDamaged()
+    {
+        OnUnitDamaged.Invoke();
+    }
+
+    public static void SendTowerDamaged()
+    {
+        OnTowerDamaged.Invoke();
+    }
+
+    public static void SendUIClcked()
+    {
+        OnUIClicked.Invoke();
     }
 }

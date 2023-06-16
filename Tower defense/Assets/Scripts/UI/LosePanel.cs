@@ -5,6 +5,7 @@ public class LosePanel : MonoBehaviour
 {
     [SerializeField] private GameObject[] objsToHide;
     [SerializeField] private GameObject elParent;
+    [SerializeField] private AudioSource loseSound;
 
 
     private void Start()
@@ -22,16 +23,22 @@ public class LosePanel : MonoBehaviour
             {
                 obj.SetActive(false);
             }
+
+            loseSound.Play();
         }
     }
 
     public void Restart()
     {
+        GlobalEventManager.SendUIClcked();
+
         SceneManager.LoadScene(0);
     }
 
     public void Exit()
     {
+        GlobalEventManager.SendUIClcked();
+
         SceneManager.LoadScene(1);
     }
 }

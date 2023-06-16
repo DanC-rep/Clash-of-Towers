@@ -32,6 +32,7 @@ public class TowerStats : ObjStats
                 gameObject.GetComponent<Animator>().SetTrigger("25%");
             }
         }
+        GlobalEventManager.SendTowerDamaged();
     }
 
     private void DestroyTower()

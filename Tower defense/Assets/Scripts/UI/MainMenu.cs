@@ -31,10 +31,14 @@ public class MainMenu : MonoBehaviour
                 obj.SetActive(true);
             }
         }
+
+        GlobalEventManager.SendUIClcked();
     }
 
     public void Settings()
     {
+        GlobalEventManager.SendUIClcked();
+
         Debug.Log("Settings");
     }
 
@@ -58,6 +62,8 @@ public class MainMenu : MonoBehaviour
                 obj.SetActive(true);
             }
         }
+
+        GlobalEventManager.SendUIClcked();
     }
 
     public void TowerUpgradeShop()
@@ -80,5 +86,7 @@ public class MainMenu : MonoBehaviour
                 obj.SetActive(true);
             }
         }
+
+        GlobalEventManager.SendUIClcked();
     }
 }

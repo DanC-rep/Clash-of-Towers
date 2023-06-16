@@ -7,7 +7,16 @@ public class AddStatsPanel : MonoBehaviour
     [SerializeField] private int damageCost, healthCost, speedCost;
 
     [SerializeField] private Text damageText, healthText, speedText;
-    
+
+    [SerializeField] private GameObject[] btns;
+
+    private Color color;
+
+    private void Start()
+    {
+        color = btns[0].GetComponent<Image>().color;
+    }
+
 
     public void AddDamage()
     {
@@ -19,7 +28,13 @@ public class AddStatsPanel : MonoBehaviour
             PlayerSettings.instance.DecreaseDiamonds(damageCost);
 
             GlobalEventManager.SendStatUpgraded();
-        } 
+        }
+        else
+        {
+            StartCoroutine(UIColorChange.ChangeColorToRed(btns[0], color, new Color(1, 0.4566038f, 0.4566038f)));
+        }
+
+        GlobalEventManager.SendUIClcked();
     }
 
     public void AddSpeed()
@@ -33,6 +48,12 @@ public class AddStatsPanel : MonoBehaviour
 
             GlobalEventManager.SendStatUpgraded();
         }
+        else
+        {
+            StartCoroutine(UIColorChange.ChangeColorToRed(btns[2], color, new Color(1, 0.4566038f, 0.4566038f)));
+        }
+
+        GlobalEventManager.SendUIClcked();
     }
 
     public void AddHealth()
@@ -46,6 +67,12 @@ public class AddStatsPanel : MonoBehaviour
 
             GlobalEventManager.SendStatUpgraded();
         }
+        else
+        {
+            StartCoroutine(UIColorChange.ChangeColorToRed(btns[1], color, new Color(1, 0.4566038f, 0.4566038f)));
+        }
+
+        GlobalEventManager.SendUIClcked();
     }
 
     public int GetDamageCost()

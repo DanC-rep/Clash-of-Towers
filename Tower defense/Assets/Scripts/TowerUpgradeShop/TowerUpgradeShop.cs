@@ -12,6 +12,7 @@ public class TowerUpgradeShop : MonoBehaviour
     [SerializeField] private Button upgradeBtn;
 
     private int currentTowerLevel = 0;
+    private Color color;
 
     private void Start()
     {
@@ -36,6 +37,7 @@ public class TowerUpgradeShop : MonoBehaviour
             diamondIcon.enabled = false;
         }
 
+        color = upgradeBtn.gameObject.GetComponent<Image>().color;
     }
 
     public void UpgradeTower()
@@ -64,7 +66,9 @@ public class TowerUpgradeShop : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not enought money");
+            StartCoroutine(UIColorChange.ChangeColorToRed(upgradeBtn.gameObject, color, new Color(1, 0.56f, 0.56f)));
         }
+
+        GlobalEventManager.SendUIClcked();
     }
 }

@@ -78,6 +78,8 @@ public class UnitStats : ObjStats
             health -= damage;
             healthBar.SetHealth(health);
         }
+
+        GlobalEventManager.SendUnitDamaged();
     }
 
     public void DestroyUnit()

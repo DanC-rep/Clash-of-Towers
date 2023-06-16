@@ -14,6 +14,8 @@ public class ShopMenuEl : MonoBehaviour
 
     public static GameObject choosedUnit;
 
+    private Color color;
+
     private void Start()
     {
         if (!unit.GetComponent<UnitStats>().purchased)
@@ -25,6 +27,8 @@ public class ShopMenuEl : MonoBehaviour
             unitCost.enabled = false;
             diamondIcon.enabled = false;
         }
+
+        color = gameObject.GetComponent<Image>().color;
     }
 
     public void ChooseUnit()
@@ -46,7 +50,13 @@ public class ShopMenuEl : MonoBehaviour
 
                 GlobalEventManager.SendUnitPurchaseDiamonds();
             }
+            else
+            {
+                StartCoroutine(UIColorChange.ChangeColorToRed(gameObject, color, new Color(1, 0.6075472f, 0.6075472f)));
+            }
         }
+
+        GlobalEventManager.SendUIClcked();
     }
 
     private void OpenUnit()

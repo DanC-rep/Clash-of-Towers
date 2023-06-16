@@ -9,6 +9,7 @@ public class WinPanel : MonoBehaviour
     [SerializeField] private Text diamondsText;
     [SerializeField] private TowerStats blueTower;
     [SerializeField] private string nextLevel;
+    [SerializeField] private AudioSource winSound;
 
 
     private void Start()
@@ -28,16 +29,22 @@ public class WinPanel : MonoBehaviour
             }
 
             diamondsText.text = blueTower.GetAddedDiamonds().ToString();
+
+            winSound.Play();
         }
     }
 
     public void NextLevel()
     {
+        GlobalEventManager.SendUIClcked();
+
         SceneManager.LoadScene(nextLevel);
     }
 
     public void Exit()
     {
+        GlobalEventManager.SendUIClcked();
+
         SceneManager.LoadScene(1);
     }
 }

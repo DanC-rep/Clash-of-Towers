@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,6 @@ public class Timer : MonoBehaviour
     [SerializeField] private float timeStart;
     
     private Text timerText;
-    private bool timeRunnning = true; 
 
 
     private void Start()
@@ -19,28 +19,24 @@ public class Timer : MonoBehaviour
         }
         timerText = GetComponent<Text>();
         timerText.text = timeStart.ToString();
+
+        StartCoroutine(TimerRun());
     }
 
-    private void Update()
+    IEnumerator TimerRun()
     {
-        if (timeRunnning)
+        while (timeStart > 0)
         {
             timeStart -= Time.deltaTime;
             timerText.text = Mathf.Round(timeStart).ToString();
-            if (timeStart <= 0)
-            {
-                timeRunnning = false;
-            }
+            yield return null;
         }
 
-        if (!timeRunnning)
+        foreach (var button in buttons)
         {
-            foreach (var button in buttons)
-            {
-                button.interactable = true;
-            }
-
-            timerText.enabled = false;
+            button.interactable = true;
         }
+
+        timerText.enabled = false;
     }
 }

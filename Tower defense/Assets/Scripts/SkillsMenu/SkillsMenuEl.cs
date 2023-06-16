@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,32 +10,45 @@ public class SkillsMenuEl : MonoBehaviour
 
     [SerializeField] Text diamondsCostText;
 
+    [SerializeField] TempSkillsCaller tempCaller;
+
+    private Color color;
+
     private void Start()
     {
         diamondsCostText.text = diamondsCost.ToString();
+
+        color = gameObject.GetComponent<Image>().color;
     }
 
     public void AddTowerHealth()
     {
-        if (PlayerSettings.instance.GetDiamonds() - diamondsCost >= 0)
+        GameObject tower = GameObject.FindGameObjectWithTag("RedTower");
+        bool healthCond = tower.GetComponent<TowerStats>().GetHealth() < tower.GetComponent<TowerStats>().GetStartHealth();
+
+        if (PlayerSettings.instance.GetDiamonds() - diamondsCost >= 0 && tower != null && healthCond)
         {
             PlayerSettings.instance.DecreaseDiamonds(diamondsCost);
 
-            GameObject tower = GameObject.FindGameObjectWithTag("RedTower");
             tower.GetComponent<TowerStats>().AddHealth(valueAdd);
 
             GlobalEventManager.SendSkillPurchase();
         }
+        else
+        {
+            StartCoroutine(UIColorChange.ChangeColorToRed(gameObject, color, new Color(1, 0.4566038f, 0.4566038f)));
+        }
+
+        GlobalEventManager.SendUIClcked();
     }
 
     public void AddHealth()
     {
+        GameObject[] units = GameObject.FindGameObjectsWithTag("FirstTeam");
 
-        if (PlayerSettings.instance.GetDiamonds() - diamondsCost >= 0)
+        if (PlayerSettings.instance.GetDiamonds() - diamondsCost >= 0 && units.Length > 0)
         {
             PlayerSettings.instance.DecreaseDiamonds(diamondsCost);
-
-            GameObject[] units = GameObject.FindGameObjectsWithTag("FirstTeam");
 
             foreach (var unit in units)
             {
@@ -43,24 +57,35 @@ public class SkillsMenuEl : MonoBehaviour
 
             GlobalEventManager.SendSkillPurchase();
         }
+        else
+        {
+            StartCoroutine(UIColorChange.ChangeColorToRed(gameObject, color, new Color(1, 0.4566038f, 0.4566038f)));
+        }
+
+        GlobalEventManager.SendUIClcked();
     }
 
     public void AddDamage()
     {
+        GameObject[] units = GameObject.FindGameObjectsWithTag("FirstTeam");
 
-        if (PlayerSettings.instance.GetDiamonds() - diamondsCost >= 0)
+        if (PlayerSettings.instance.GetDiamonds() - diamondsCost >= 0 && units.Length > 0)
         {
             PlayerSettings.instance.DecreaseDiamonds(diamondsCost);
 
-            GameObject[] units = GameObject.FindGameObjectsWithTag("FirstTeam");
-
             foreach (var unit in units)
             {
-                StartCoroutine(unit.GetComponent<UnitStats>().AddTemporarilyDamage(valueAdd, tempDuration));
+                tempCaller.CallAddDamage(unit.GetComponent<UnitStats>(), valueAdd, tempDuration);
             }
 
             GlobalEventManager.SendSkillPurchase();
         }
+        else
+        {
+            StartCoroutine(UIColorChange.ChangeColorToRed(gameObject, color, new Color(1, 0.4566038f, 0.4566038f)));
+        }
+
+        GlobalEventManager.SendUIClcked();
     }
 
     public void AddMoney()
@@ -69,10 +94,16 @@ public class SkillsMenuEl : MonoBehaviour
         {
             PlayerSettings.instance.DecreaseDiamonds(diamondsCost);
 
-            StartCoroutine(PlayerSettings.instance.AddTempMoney(valueAdd, tempDuration));
+            tempCaller.CallAddMoney(valueAdd, tempDuration);
 
             GlobalEventManager.SendSkillPurchase();
         }
+        else
+        {
+            StartCoroutine(UIColorChange.ChangeColorToRed(gameObject, color, new Color(1, 0.4566038f, 0.4566038f)));
+        }
+
+        GlobalEventManager.SendUIClcked();
     }
 }
 

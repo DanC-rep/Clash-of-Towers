@@ -315,3 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 4573380778162137, guid: 6ceb9d8bdbe9e4642afc9aaf7651ff2b, type: 3}
   playerSettings: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  parent: {fileID: 0}
+  button: {fileID: 5465167305039388870}
+  buyCooldown: 3
