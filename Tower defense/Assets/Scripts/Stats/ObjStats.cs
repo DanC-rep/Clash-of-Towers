@@ -10,11 +10,15 @@ public class ObjStats : MonoBehaviour
 
     private protected bool canAnimateDeath = true;
 
-    private void Start()
+    private protected Animator animator;
+
+    public virtual void Start()
     {
         healthBar.SetMaxHealth(startHealth);
 
         health = startHealth;
+
+        animator = gameObject.GetComponent<Animator>();
     }
 
     public int GetHealth()
@@ -23,7 +27,7 @@ public class ObjStats : MonoBehaviour
         return health;
     }
 
-    public int GetStartHealth()
+    public virtual int GetStartHealth()
     {
         return startHealth;
     }

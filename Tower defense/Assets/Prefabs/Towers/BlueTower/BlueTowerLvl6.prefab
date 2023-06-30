@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2633797843716060278}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -71.14, y: -1.29, z: 1}
+  m_LocalPosition: {x: 0.03, y: 1.31, z: 1}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -780,10 +780,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04421bdda9dd1d84f959d9305d4ae29f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 700
+  startHealth: 450
   healthBar: {fileID: 5601308299863309052}
   diamondsCost: 0
-  diamonds: 2
+  diamonds: 15
   moneyPerTime: 0
 --- !u!114 &8402363829574646405
 MonoBehaviour:
@@ -1305,7 +1305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6943501011874440963}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -71.14, y: -1.29, z: 1}
+  m_LocalPosition: {x: 0.009999543, y: 1.31, z: 1}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -649,10 +649,13 @@ MonoBehaviour:
   healthBar: {fileID: 1048975418129284267}
   diamondsCost: 0
   radius: 5
-  speed: 150
-  damage: 30
+  defaultSpeed: 180
+  defaultDamage: 45
   cost: 150
   towerRadius: 7
+  maxUpgradeDamage: 0
+  maxUpgradeSpeed: 0
+  maxUpgradeHealth: 0
   purchased: 0
 --- !u!114 &4529210362942383583
 MonoBehaviour:
@@ -1064,7 +1067,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -1266048635239754633, guid: ef12e37b666276440ab2b9620b466a7e, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9144d569d799bc148a831cff96b5efd4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0

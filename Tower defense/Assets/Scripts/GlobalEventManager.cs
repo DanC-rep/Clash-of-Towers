@@ -13,6 +13,9 @@ public class GlobalEventManager
     public static UnityEvent OnUnitDamaged = new UnityEvent();
     public static UnityEvent OnTowerDamaged = new UnityEvent();
     public static UnityEvent OnUIClicked = new UnityEvent();
+    public static UnityEvent OnDialogueClosed = new UnityEvent();
+    public static UnityEvent OnTimerEnded = new UnityEvent();
+    public static UnityEvent OnChooseUnit = new UnityEvent();
 
 
     public static void SendEnemyKilled()
@@ -63,5 +66,20 @@ public class GlobalEventManager
     public static void SendUIClcked()
     {
         OnUIClicked.Invoke();
+    }
+
+    public static void SendDialogueClosed()
+    {
+        OnDialogueClosed.Invoke();
+    }
+
+    public static void SendTimerEnded()
+    {
+        OnTimerEnded.Invoke();
+    }
+
+    public static void SendChooseUnit()
+    {
+        OnChooseUnit.Invoke();
     }
 }

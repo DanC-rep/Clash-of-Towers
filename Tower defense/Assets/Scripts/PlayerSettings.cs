@@ -18,19 +18,20 @@ public class PlayerSettings : MonoBehaviour
     #endregion
 
     [SerializeField] private float money;
-    [SerializeField] private int diamonds;
     [SerializeField] private int timeToWaitMoney;
-    [SerializeField] private int startTimeToGetMoneySpawn;
 
     private float moneyPerTime;
     private float moneyPerSec;
 
+    private int diamonds;
+
     private void Start()
     {
-        InvokeRepeating("AddMoneyPerTime", startTimeToGetMoneySpawn, timeToWaitMoney);
-
         moneyPerSec = moneyPerTime / timeToWaitMoney;
 
+        GlobalEventManager.OnTimerEnded.AddListener(AddMoneyPerTimeCall);
+
+        diamonds = PlayerPrefs.GetInt("diamonds", 0);
     }
 
     public void AddMoney(float addMoney)
@@ -46,11 +47,12 @@ public class PlayerSettings : MonoBehaviour
     public void AddDiamonds(int _diamonds)
     {
         diamonds += _diamonds;
+        PlayerPrefs.SetInt("diamonds", diamonds);
     }
 
     public int GetDiamonds()
     {
-        return diamonds;
+        return PlayerPrefs.GetInt("diamonds", 0);
     }
 
     public float GetMoneyPerSec()
@@ -68,6 +70,7 @@ public class PlayerSettings : MonoBehaviour
         if (diamonds - decreaseDiamonds >= 0)
         {
             diamonds -= decreaseDiamonds;
+            PlayerPrefs.SetInt("diamonds", diamonds);
         }
     }
 
@@ -96,5 +99,15 @@ public class PlayerSettings : MonoBehaviour
 
         moneyPerTime -= value;
         moneyPerSec = moneyPerTime / timeToWaitMoney;
+    }
+
+    public void AddMoneyPerTimeCall()
+    {
+        InvokeRepeating("AddMoneyPerTime", 0, timeToWaitMoney);
+    }
+
+    public float GetMoneyPerTime()
+    {
+        return moneyPerTime;
     }
 }

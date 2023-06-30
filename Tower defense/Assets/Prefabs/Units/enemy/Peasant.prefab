@@ -42,9 +42,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1266048635239754633, guid: ef12e37b666276440ab2b9620b466a7e, type: 2}
-  m_audioClip: {fileID: 8300000, guid: d2c665c0096d26344a979a1bb97f5260, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9144d569d799bc148a831cff96b5efd4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -930,14 +930,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5abce62ee01c59841b4a89375d9b1de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 50
+  startHealth: 70
   healthBar: {fileID: 1664571581443708735}
   diamondsCost: 0
   radius: 35
-  speed: 100
-  damage: 25
+  defaultSpeed: 100
+  defaultDamage: 30
   cost: 75
   towerRadius: 25
+  maxUpgradeDamage: 0
+  maxUpgradeSpeed: 0
+  maxUpgradeHealth: 0
   purchased: 0
 --- !u!114 &1218538738492255914
 MonoBehaviour:

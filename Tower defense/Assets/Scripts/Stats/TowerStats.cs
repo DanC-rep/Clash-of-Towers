@@ -12,7 +12,7 @@ public class TowerStats : ObjStats
             health -= damage / 2;
             healthBar.SetHealth(health);
 
-            gameObject.GetComponent<Animator>().SetTrigger("0%");
+            animator.SetTrigger("0%");
         }
         else
         {
@@ -21,15 +21,15 @@ public class TowerStats : ObjStats
 
             if (health <= startHealth * 75 / 100 && health > startHealth * 50 / 100)
             {
-                gameObject.GetComponent<Animator>().SetTrigger("75%");
+               animator.SetTrigger("75%");
             }
             else if (health <= startHealth * 50 / 100 && health > startHealth * 25 / 100)
             {
-                gameObject.GetComponent<Animator>().SetTrigger("50%");
+                animator.SetTrigger("50%");
             }
             else if (health <= startHealth * 25 / 100 && health > 0)
             {
-                gameObject.GetComponent<Animator>().SetTrigger("25%");
+                animator.SetTrigger("25%");
             }
         }
         GlobalEventManager.SendTowerDamaged();

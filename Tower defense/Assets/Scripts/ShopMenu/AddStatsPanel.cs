@@ -20,10 +20,11 @@ public class AddStatsPanel : MonoBehaviour
 
     public void AddDamage()
     {
-        if (ShopMenuEl.choosedUnit != null && PlayerSettings.instance.GetDiamonds() - damageCost >= 0)
+        if (ShopMenuEl.choosedUnit != null && PlayerSettings.instance.GetDiamonds() - damageCost >= 0 && 
+            ShopMenuEl.choosedUnit.GetDamage() < ShopMenuEl.choosedUnit.GetMaxUpgradeDamage())
         {
-            ShopMenuEl.choosedUnit.GetComponent<UnitStats>().AddDamage(damageAdd);
-            damageText.text = ShopMenuEl.choosedUnit.GetComponent<UnitStats>().GetDamage().ToString();
+            ShopMenuEl.choosedUnit.AddDamage(damageAdd);
+            damageText.text = ShopMenuEl.choosedUnit.GetDamage().ToString();
 
             PlayerSettings.instance.DecreaseDiamonds(damageCost);
 
@@ -39,10 +40,11 @@ public class AddStatsPanel : MonoBehaviour
 
     public void AddSpeed()
     {
-        if (ShopMenuEl.choosedUnit != null && PlayerSettings.instance.GetDiamonds() - speedCost >= 0)
+        if (ShopMenuEl.choosedUnit != null && PlayerSettings.instance.GetDiamonds() - speedCost >= 0 && 
+            ShopMenuEl.choosedUnit.GetSpeed() < ShopMenuEl.choosedUnit.GetMaxUpgradeSpeed())
         {
-            ShopMenuEl.choosedUnit.GetComponent<UnitStats>().AddSpeed(speedAdd);
-            speedText.text = ShopMenuEl.choosedUnit.GetComponent<UnitStats>().GetSpeed().ToString();
+            ShopMenuEl.choosedUnit.AddSpeed(speedAdd);
+            speedText.text = ShopMenuEl.choosedUnit.GetSpeed().ToString();
 
             PlayerSettings.instance.DecreaseDiamonds(speedCost);
 
@@ -58,10 +60,11 @@ public class AddStatsPanel : MonoBehaviour
 
     public void AddHealth()
     {
-        if (ShopMenuEl.choosedUnit != null && PlayerSettings.instance.GetDiamonds() - healthCost >= 0)
+        if (ShopMenuEl.choosedUnit != null && PlayerSettings.instance.GetDiamonds() - healthCost >= 0 && 
+            ShopMenuEl.choosedUnit.GetStartHealth() < ShopMenuEl.choosedUnit.GetMaxUpgradeHealth())
         {
-            ShopMenuEl.choosedUnit.GetComponent<UnitStats>().AddStartHealth(healthAdd);
-            healthText.text = ShopMenuEl.choosedUnit.GetComponent<UnitStats>().GetStartHealth().ToString();
+            ShopMenuEl.choosedUnit.AddStartHealth(healthAdd);
+            healthText.text = ShopMenuEl.choosedUnit.GetStartHealth().ToString();
 
             PlayerSettings.instance.DecreaseDiamonds(healthCost);
 

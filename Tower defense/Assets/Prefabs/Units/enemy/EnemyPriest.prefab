@@ -73,9 +73,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1266048635239754633, guid: ef12e37b666276440ab2b9620b466a7e, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 6b4df8df1e252344bb40e7ec0f2b56d7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9144d569d799bc148a831cff96b5efd4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -619,14 +619,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5abce62ee01c59841b4a89375d9b1de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 65
+  startHealth: 60
   healthBar: {fileID: 8135594875430221951}
   diamondsCost: 0
   radius: 20
-  speed: 100
-  damage: 45
+  defaultSpeed: 100
+  defaultDamage: 45
   cost: 125
   towerRadius: 15
+  maxUpgradeDamage: 0
+  maxUpgradeSpeed: 0
+  maxUpgradeHealth: 0
   purchased: 0
 --- !u!114 &1582151681
 MonoBehaviour:
@@ -641,7 +644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  spell: {fileID: 1049491502285656724, guid: f60c1409d611de54bba5e46de6e10d6a, type: 3}
+  spell: {fileID: 1049491502285656724, guid: 7e79b0e486f339741af0887626830158, type: 3}
   spawnPoint: {fileID: 1906018278}
   spellSpeed: 1000
 --- !u!114 &2974834762677825166

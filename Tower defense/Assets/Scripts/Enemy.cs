@@ -9,12 +9,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int timeToSpawn;
     [SerializeField] private int startTimetoSpawn;
 
-    private bool canSpawn = true;
+    private bool canSpawn = false;
     private void Start()
     {
-        InvokeRepeating("SpawnUnits", startTimetoSpawn, timeToSpawn);
-
         GlobalEventManager.OnTowerDestroy.AddListener(StopSpawn);
+        GlobalEventManager.OnTimerEnded.AddListener(StartSpawn);
     }
 
     private void SpawnUnits()
@@ -31,5 +30,12 @@ public class Enemy : MonoBehaviour
     private void StopSpawn(string towerName)
     {
         canSpawn = false; 
+    }
+
+    private void StartSpawn()
+    {
+        canSpawn = true;
+
+        InvokeRepeating("SpawnUnits", startTimetoSpawn, timeToSpawn);
     }
 }

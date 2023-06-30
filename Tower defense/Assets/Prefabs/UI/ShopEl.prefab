@@ -155,7 +155,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: '50
+
+'
 --- !u!1 &6757685880635334828
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
+  m_Color: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -280,7 +282,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3452436897388370502}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3817320967437458770}
+        m_TargetAssemblyTypeName: ShopEl, Assembly-CSharp
+        m_MethodName: PurchaseUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8637406968786851191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,9 +327,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c472aaa991a0dc43899d5a29448046d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 4573380778162137, guid: 6ceb9d8bdbe9e4642afc9aaf7651ff2b, type: 3}
+  unit: {fileID: 5056794361647473910, guid: b79ea9d6f84964e41b864792b503c9d6, type: 3}
   playerSettings: {fileID: 0}
   spawnPoint: {fileID: 0}
   parent: {fileID: 0}
   button: {fileID: 5465167305039388870}
   buyCooldown: 3
+  costText: {fileID: 2249242711759860241}

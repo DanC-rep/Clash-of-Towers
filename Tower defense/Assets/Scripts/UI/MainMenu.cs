@@ -35,13 +35,6 @@ public class MainMenu : MonoBehaviour
         GlobalEventManager.SendUIClcked();
     }
 
-    public void Settings()
-    {
-        GlobalEventManager.SendUIClcked();
-
-        Debug.Log("Settings");
-    }
-
     public void Shop()
     {
         if (shop.activeSelf == false)

@@ -1,38 +1,47 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SkillsMenuEl : MonoBehaviour
 {
-    [SerializeField] int diamondsCost;
-    [SerializeField] int valueAdd;
-    [SerializeField] int tempDuration;
+    [SerializeField] private int diamondsCost;
+    [SerializeField] private int tempDuration;
+    [SerializeField] private int buyCooldown;
 
     [SerializeField] Text diamondsCostText;
 
     [SerializeField] TempSkillsCaller tempCaller;
 
+
     private Color color;
+    private int valueAdd;
+
+    private TowerStats tower;
 
     private void Start()
     {
         diamondsCostText.text = diamondsCost.ToString();
 
         color = gameObject.GetComponent<Image>().color;
+
+        tower = GameObject.FindGameObjectWithTag("RedTower").GetComponent<TowerStats>();
     }
 
     public void AddTowerHealth()
     {
-        GameObject tower = GameObject.FindGameObjectWithTag("RedTower");
-        bool healthCond = tower.GetComponent<TowerStats>().GetHealth() < tower.GetComponent<TowerStats>().GetStartHealth();
+        bool healthCond = tower.GetHealth() < tower.GetStartHealth();
+        valueAdd = tower.GetStartHealth() * 20 / 100;
 
         if (PlayerSettings.instance.GetDiamonds() - diamondsCost >= 0 && tower != null && healthCond)
         {
             PlayerSettings.instance.DecreaseDiamonds(diamondsCost);
 
-            tower.GetComponent<TowerStats>().AddHealth(valueAdd);
+            tower.AddHealth(valueAdd);
 
             GlobalEventManager.SendSkillPurchase();
+
+            tempCaller.CallBuyCooldown(this, gameObject.GetComponent<Button>());
         }
         else
         {
@@ -52,10 +61,13 @@ public class SkillsMenuEl : MonoBehaviour
 
             foreach (var unit in units)
             {
+                valueAdd = unit.GetComponent<UnitStats>().GetStartHealth() * 30 / 100;
                 unit.GetComponent<UnitStats>().AddHealth(valueAdd);
             }
 
             GlobalEventManager.SendSkillPurchase();
+
+            tempCaller.CallBuyCooldown(this, gameObject.GetComponent<Button>());
         }
         else
         {
@@ -75,10 +87,13 @@ public class SkillsMenuEl : MonoBehaviour
 
             foreach (var unit in units)
             {
+                valueAdd = unit.GetComponent<UnitStats>().GetDamage() * 50 / 100;
                 tempCaller.CallAddDamage(unit.GetComponent<UnitStats>(), valueAdd, tempDuration);
             }
 
             GlobalEventManager.SendSkillPurchase();
+
+            tempCaller.CallBuyCooldown(this, gameObject.GetComponent<Button>());
         }
         else
         {
@@ -94,9 +109,13 @@ public class SkillsMenuEl : MonoBehaviour
         {
             PlayerSettings.instance.DecreaseDiamonds(diamondsCost);
 
+            valueAdd = Convert.ToInt32(PlayerSettings.instance.GetMoneyPerTime());
+
             tempCaller.CallAddMoney(valueAdd, tempDuration);
 
             GlobalEventManager.SendSkillPurchase();
+
+            tempCaller.CallBuyCooldown(this, gameObject.GetComponent<Button>());
         }
         else
         {
@@ -104,6 +123,13 @@ public class SkillsMenuEl : MonoBehaviour
         }
 
         GlobalEventManager.SendUIClcked();
+    }
+
+    public IEnumerator BuyCooldown(Button button)
+    {
+        button.interactable = false;
+        yield return new WaitForSeconds(buyCooldown);
+        button.interactable = true;
     }
 }
 

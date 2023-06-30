@@ -6,7 +6,12 @@ public class DiamondsCost : MonoBehaviour
     [SerializeField] private Text damageCostText, healthCostText, speedCostText;
     [SerializeField] private AddStatsPanel addStatsPanel;
 
-    private void Update()
+    private void Start()
+    {
+        GlobalEventManager.OnChooseUnit.AddListener(ShowDiamondsCost);
+    }
+
+    private void ShowDiamondsCost()
     {
         if (ShopMenuEl.choosedUnit != null)
         {

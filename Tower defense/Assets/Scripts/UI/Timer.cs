@@ -7,20 +7,19 @@ public class Timer : MonoBehaviour
     [SerializeField] private Button[] buttons;
 
     [SerializeField] private float timeStart;
+
+    [SerializeField] private GameObject dialogueMenu;
     
     private Text timerText;
 
 
-    private void Start()
+    private void Awake()
     {
-        foreach (var button in buttons)
+        if (dialogueMenu == null)
         {
-            button.interactable = false;
+            RunTimer();
         }
-        timerText = GetComponent<Text>();
-        timerText.text = timeStart.ToString();
-
-        StartCoroutine(TimerRun());
+        GlobalEventManager.OnDialogueClosed.AddListener(RunTimer);
     }
 
     IEnumerator TimerRun()
@@ -38,5 +37,19 @@ public class Timer : MonoBehaviour
         }
 
         timerText.enabled = false;
+
+        GlobalEventManager.SendTimerEnded();
+    }
+
+    private void RunTimer()
+    {
+        foreach (var button in buttons)
+        {
+            button.interactable = false;
+        }
+        timerText = GetComponent<Text>();
+        timerText.text = timeStart.ToString();
+
+        StartCoroutine(TimerRun());
     }
 }

@@ -9,7 +9,16 @@ public class UnitStats : ObjStats
     [SerializeField] private int cost;
     [SerializeField] private int towerRadius;
 
-    public bool purchased;
+    [SerializeField] private int maxUpgradeDamage;
+    [SerializeField] private float maxUpgradeSpeed;
+    [SerializeField] private int maxUpgradeHealth;
+
+    [SerializeField] private bool purchased;
+
+    public override void Start()
+    {
+        base.Start();
+    }
 
     public int GetRadius()
     {
@@ -18,12 +27,16 @@ public class UnitStats : ObjStats
 
     public float GetSpeed()
     {
-        return speed;
+        return PlayerPrefs.GetFloat(gameObject.name + "Speed", speed);
     }
 
     public int GetDamage()
     {
-        return damage;
+        return PlayerPrefs.GetInt(gameObject.name + "Damage", damage);
+    }
+    public override int GetStartHealth()
+    {
+        return PlayerPrefs.GetInt(gameObject.name + "Health", startHealth);
     }
 
     public int GetCost()
@@ -36,19 +49,44 @@ public class UnitStats : ObjStats
         return towerRadius;
     }
 
+    public int GetMaxUpgradeDamage()
+    {
+        return maxUpgradeDamage;
+    }
+
+    public int GetMaxUpgradeHealth()
+    {
+        return maxUpgradeHealth;
+    }
+
+    public float GetMaxUpgradeSpeed()
+    {
+        return maxUpgradeSpeed;
+    }
+
+    public bool GetPurchased()
+    {
+        return Converter.IntToBool(PlayerPrefs.GetInt(gameObject.name + "Purchased", Converter.BoolToInt(purchased)));
+    }
+
+    public void SetPurchased()
+    {
+        PlayerPrefs.SetInt(gameObject.name + "Purchased", Converter.BoolToInt(true));
+    }
+
     public void AddDamage(int _damage)
     {
-        damage += _damage;
+        PlayerPrefs.SetInt(gameObject.name + "Damage", PlayerPrefs.GetInt(gameObject.name + "Damage", damage) + _damage);
     }
 
     public void AddSpeed(int _speed)
     {
-        speed += _speed;
+        PlayerPrefs.SetFloat(gameObject.name + "Speed", PlayerPrefs.GetFloat(gameObject.name + "Speed", speed) + _speed);
     }
 
     public void AddStartHealth(int _health)
     {
-        startHealth += _health;
+        PlayerPrefs.SetInt(gameObject.name + "Health", PlayerPrefs.GetInt(gameObject.name + "Health", startHealth) + _health);
     }
 
     public IEnumerator AddTemporarilyDamage(int _damage, int duration)
@@ -67,14 +105,14 @@ public class UnitStats : ObjStats
             healthBar.SetHealth(health);
             if (canAnimateDeath == true)
             {
-                gameObject.GetComponent<Animator>().SetTrigger("Death");
+                animator.SetTrigger("Death");
             }
 
             canAnimateDeath = false;
         }
         else
         {
-            gameObject.GetComponent<Animator>().SetTrigger("Hurt");
+            animator.SetTrigger("Hurt");
             health -= damage;
             healthBar.SetHealth(health);
         }
@@ -86,7 +124,7 @@ public class UnitStats : ObjStats
     {
         if (gameObject.tag == "SecondTeam")
         {
-            PlayerSettings.instance.AddMoney(cost);
+            PlayerSettings.instance.AddMoney(cost / 2);
         }
 
         Destroy(gameObject);
@@ -94,3 +132,6 @@ public class UnitStats : ObjStats
         GlobalEventManager.SendEnemyKilled();
     }
 }
+
+
+

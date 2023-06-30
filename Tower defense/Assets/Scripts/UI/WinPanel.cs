@@ -45,6 +45,6 @@ public class WinPanel : MonoBehaviour
     {
         GlobalEventManager.SendUIClcked();
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ShopMenuEl : MonoBehaviour
 {
-    [SerializeField] private GameObject unit;
+    [SerializeField] private UnitStats unit;
     [SerializeField] private Sprite unitIcon;
 
     [SerializeField] private Image placeToPutIcon;
@@ -12,15 +12,15 @@ public class ShopMenuEl : MonoBehaviour
     [SerializeField] private Text unitCost;
     [SerializeField] private Image diamondIcon;
 
-    public static GameObject choosedUnit;
+    public static UnitStats choosedUnit;
 
     private Color color;
 
     private void Start()
     {
-        if (!unit.GetComponent<UnitStats>().purchased)
+        if (!unit.GetPurchased())
         {
-            unitCost.text = unit.GetComponent<UnitStats>().GetDiamondsCost().ToString();
+            unitCost.text = unit.GetDiamondsCost().ToString();
         }
         else
         {
@@ -33,22 +33,24 @@ public class ShopMenuEl : MonoBehaviour
 
     public void ChooseUnit()
     {
-        if (unit.GetComponent<UnitStats>().purchased == true)
+        if (unit.GetPurchased() == true)
         {
             OpenUnit();
+            GlobalEventManager.SendChooseUnit();
         }
         else
         {
-            if (PlayerSettings.instance.GetDiamonds() - unit.GetComponent<UnitStats>().GetDiamondsCost() >= 0)
+            if (PlayerSettings.instance.GetDiamonds() - unit.GetDiamondsCost() >= 0)
             {
-                unit.GetComponent<UnitStats>().purchased = true;
-                PlayerSettings.instance.DecreaseDiamonds(unit.GetComponent<UnitStats>().GetDiamondsCost());
+                unit.SetPurchased();
+                PlayerSettings.instance.DecreaseDiamonds(unit.GetDiamondsCost());
                 unitCost.enabled = false;
                 diamondIcon.enabled = false;
 
                 OpenUnit();
 
                 GlobalEventManager.SendUnitPurchaseDiamonds();
+                GlobalEventManager.SendChooseUnit();
             }
             else
             {
@@ -64,9 +66,9 @@ public class ShopMenuEl : MonoBehaviour
         placeToPutIcon.enabled = true;
         placeToPutIcon.sprite = unitIcon;
 
-        damageText.text = unit.GetComponent<UnitStats>().GetDamage().ToString();
-        healthText.text = unit.GetComponent<UnitStats>().GetStartHealth().ToString();
-        speedText.text = unit.GetComponent<UnitStats>().GetSpeed().ToString();
+        damageText.text = unit.GetDamage().ToString();
+        healthText.text = unit.GetStartHealth().ToString();
+        speedText.text = unit.GetSpeed().ToString();
 
         choosedUnit = unit;
     }
