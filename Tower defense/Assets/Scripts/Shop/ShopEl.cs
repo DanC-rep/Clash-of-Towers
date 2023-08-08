@@ -21,7 +21,7 @@ public class ShopEl : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        color = gameObject.GetComponent<Image>().color;
+        color = button.gameObject.GetComponent<Image>().color;
 
         costText.text = unit.GetCost().ToString();
     }
@@ -43,7 +43,7 @@ public class ShopEl : MonoBehaviour
         }
         else
         {
-            StartCoroutine(UIColorChange.ChangeColorToRed(gameObject, color, new Color(1, 0.6075472f, 0.6075472f)));
+            StartCoroutine(UIColorChange.ChangeColorToRed(button.gameObject, color, new Color(1, 0.6075472f, 0.6075472f)));
         }
 
         GlobalEventManager.SendUIClcked();

@@ -724,12 +724,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5abce62ee01c59841b4a89375d9b1de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 120
+  startHealth: 110
   healthBar: {fileID: 3594136057704469519}
   diamondsCost: 0
   radius: 4
-  defaultSpeed: 110
-  defaultDamage: 40
+  speed: 150
+  damage: 40
   cost: 110
   towerRadius: 6
   maxUpgradeDamage: 0

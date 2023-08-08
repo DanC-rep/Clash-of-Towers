@@ -12,7 +12,7 @@ public class Money : MonoBehaviour
         moneyText = GetComponent<Text>();
         moneyText.text = PlayerSettings.instance.GetMoney().ToString();
 
-        moneyPerSec.text= string.Format("{0:0.00}", PlayerSettings.instance.GetMoneyPerSec()) + "/sec";
+        moneyPerSec.text= string.Format("{0:0.00}", PlayerSettings.instance.GetMoneyPerSec()) + "/сек";
 
         GlobalEventManager.OnEnemyKilled.AddListener(SetTextMoney);
         GlobalEventManager.OnPurchaseUnit.AddListener(SetTextMoney);
@@ -23,7 +23,7 @@ public class Money : MonoBehaviour
     {
         moneyText.text = PlayerSettings.instance.GetMoney().ToString();
 
-        moneyPerSec.text = string.Format("{0:0.00}", PlayerSettings.instance.GetMoneyPerSec()) + "/sec";
+        moneyPerSec.text = string.Format("{0:0.00}", PlayerSettings.instance.GetMoneyPerSec()) + "/сек";
     }
 
 }

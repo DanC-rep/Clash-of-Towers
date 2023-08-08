@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -7,6 +8,13 @@ public class Pause : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject[] otherObjs;
     [SerializeField] private GameObject menuButton;
+
+    public static UnityEvent OnMenuClosed = new UnityEvent();
+
+    public static void SendMenuClosed()
+    {
+        OnMenuClosed.Invoke();
+    }
 
     public void openPauseMenu()
     {
@@ -30,12 +38,16 @@ public class Pause : MonoBehaviour
 
         foreach (var obj in otherObjs)
         {
-            obj.SetActive(true);
+            if (obj.name != "SkillsMenu")
+            {
+                obj.SetActive(true);
+            }
         }
 
         Time.timeScale = 1;
 
         GlobalEventManager.SendUIClcked();
+        SendMenuClosed();
     }
 
     public void Menu()

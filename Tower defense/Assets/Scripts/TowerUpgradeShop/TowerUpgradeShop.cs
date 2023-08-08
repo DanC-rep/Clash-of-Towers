@@ -35,7 +35,7 @@ public class TowerUpgradeShop : MonoBehaviour
         }
         else
         {
-            costText.text = "Max Level";
+            costText.text = "Макс.";
             diamondIcon.enabled = false;
         }
 
@@ -61,7 +61,7 @@ public class TowerUpgradeShop : MonoBehaviour
             }
             else
             {
-                costText.text = "Max Level";
+                costText.text = "Макс.";
                 diamondIcon.enabled = false;
             }
 

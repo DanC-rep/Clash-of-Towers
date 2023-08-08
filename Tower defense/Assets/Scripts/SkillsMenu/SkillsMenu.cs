@@ -8,6 +8,11 @@ public class SkillsMenu : MonoBehaviour
     [SerializeField] private Sprite openMenuPlusImg;
     [SerializeField] private GameObject skillsMenu;
 
+    private void Start()
+    {
+        Pause.OnMenuClosed.AddListener(ChangeButtonIcon);
+    }
+
     public void OpenMenu()
     {
         if (skillsMenu.activeSelf == false)
@@ -24,5 +29,8 @@ public class SkillsMenu : MonoBehaviour
         GlobalEventManager.SendUIClcked();
     }
 
-
+    private void ChangeButtonIcon()
+    {
+        placeToPutMenuImg.sprite = openMenuPlusImg;
+    }
 }

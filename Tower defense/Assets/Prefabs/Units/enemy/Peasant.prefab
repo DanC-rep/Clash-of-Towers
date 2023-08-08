@@ -933,11 +933,11 @@ MonoBehaviour:
   startHealth: 70
   healthBar: {fileID: 1664571581443708735}
   diamondsCost: 0
-  radius: 35
-  defaultSpeed: 100
-  defaultDamage: 30
+  radius: 25
+  speed: 100
+  damage: 25
   cost: 75
-  towerRadius: 25
+  towerRadius: 20
   maxUpgradeDamage: 0
   maxUpgradeSpeed: 0
   maxUpgradeHealth: 0
@@ -957,7 +957,7 @@ MonoBehaviour:
   target: {fileID: 0}
   spell: {fileID: 5392986909416318011, guid: a2a7f22f66a18b14593eb9ca8dcbab5e, type: 3}
   spawnPoint: {fileID: 871070746481785161}
-  spellSpeed: 10000
+  spellSpeed: 5000
 --- !u!114 &5227013200096883886
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ public class Diamonds : MonoBehaviour
         GlobalEventManager.OnPurchaseUnitDiamonds.AddListener(SetDiamonds);
         GlobalEventManager.OnStatUpgraded.AddListener(SetDiamonds);
         GlobalEventManager.OnPurchaseSkill.AddListener(SetDiamonds);
+        GlobalEventManager.OnAdReward.AddListener(SetDiamonds);
     }
 
     private void SetDiamonds()

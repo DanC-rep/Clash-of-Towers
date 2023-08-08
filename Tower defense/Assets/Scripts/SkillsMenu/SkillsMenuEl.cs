@@ -39,7 +39,7 @@ public class SkillsMenuEl : MonoBehaviour
 
             tower.AddHealth(valueAdd);
 
-            GlobalEventManager.SendSkillPurchase();
+            GlobalEventManager.SendSkillPurchase("AddTowerHealth");
 
             tempCaller.CallBuyCooldown(this, gameObject.GetComponent<Button>());
         }
@@ -65,7 +65,7 @@ public class SkillsMenuEl : MonoBehaviour
                 unit.GetComponent<UnitStats>().AddHealth(valueAdd);
             }
 
-            GlobalEventManager.SendSkillPurchase();
+            GlobalEventManager.SendSkillPurchase("AddHealth");
 
             tempCaller.CallBuyCooldown(this, gameObject.GetComponent<Button>());
         }
@@ -91,7 +91,7 @@ public class SkillsMenuEl : MonoBehaviour
                 tempCaller.CallAddDamage(unit.GetComponent<UnitStats>(), valueAdd, tempDuration);
             }
 
-            GlobalEventManager.SendSkillPurchase();
+            GlobalEventManager.SendSkillPurchase("AddDamage");
 
             tempCaller.CallBuyCooldown(this, gameObject.GetComponent<Button>());
         }
@@ -113,7 +113,7 @@ public class SkillsMenuEl : MonoBehaviour
 
             tempCaller.CallAddMoney(valueAdd, tempDuration);
 
-            GlobalEventManager.SendSkillPurchase();
+            GlobalEventManager.SendSkillPurchase("AddMoney");
 
             tempCaller.CallBuyCooldown(this, gameObject.GetComponent<Button>());
         }

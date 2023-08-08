@@ -9,18 +9,24 @@ public class GlobalEventManager
     public static UnityEvent<string> OnTowerDestroy = new UnityEvent<string>();
     public static UnityEvent OnStatUpgraded = new UnityEvent();
     public static UnityEvent OnPurchaseUnitDiamonds = new UnityEvent();
-    public static UnityEvent OnPurchaseSkill = new UnityEvent();
+    public static UnityEvent<string> OnPurchaseSkill = new UnityEvent<string>();
     public static UnityEvent OnUnitDamaged = new UnityEvent();
     public static UnityEvent OnTowerDamaged = new UnityEvent();
     public static UnityEvent OnUIClicked = new UnityEvent();
     public static UnityEvent OnDialogueClosed = new UnityEvent();
     public static UnityEvent OnTimerEnded = new UnityEvent();
     public static UnityEvent OnChooseUnit = new UnityEvent();
+    public static UnityEvent OnAdReward = new UnityEvent();
 
 
     public static void SendEnemyKilled()
     {
         OnEnemyKilled.Invoke();
+    }
+
+    public static void SendAdRewarded()
+    {
+        OnAdReward.Invoke();
     }
 
     public static void SendPurchaseUnit()
@@ -48,9 +54,9 @@ public class GlobalEventManager
         OnPurchaseUnitDiamonds.Invoke();
     }
 
-    public static void SendSkillPurchase()
+    public static void SendSkillPurchase(string skillName)
     {
-        OnPurchaseSkill.Invoke();
+        OnPurchaseSkill.Invoke(skillName);
     }
 
     public static void SendUnitDamaged()

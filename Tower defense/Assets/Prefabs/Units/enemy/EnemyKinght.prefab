@@ -776,8 +776,8 @@ MonoBehaviour:
   healthBar: {fileID: 2706454206426305302}
   diamondsCost: 0
   radius: 4
-  defaultSpeed: 150
-  defaultDamage: 30
+  speed: 150
+  damage: 30
   cost: 100
   towerRadius: 6
   maxUpgradeDamage: 0
